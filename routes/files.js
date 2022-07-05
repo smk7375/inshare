@@ -19,9 +19,9 @@ let upload = multer({ storage, limits: { fileSize: 1000000 * 100 }, }).single('m
 router.post('/', (req, res) => {
   upload(req, res, async (err) => {
 
-    if (!req.file) {
-      return res.json({ error: 'all fields are required' })
-    }
+    // if (!req.file) {
+    //   return res.json({ error: 'all fields are required' })
+    // }
 
     if (err) {
       return res.status(500).send({ error: err.message });
@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
     });
     const response = await file.save();
     // download page ki link hai
-    res.json({ file: `${process.env.APP_BASE_URL}file/${response.uuid}` });
+    res.json({ file: `${process.env.APP_BASE_URL}/file/${response.uuid}` });
     //http://localhost:3000/files/sdchsihfwehkcb ---> download link 
   });
 });
@@ -73,7 +73,7 @@ router.post('/send', async (req, res) => {
     text: '${emailFrom} shared a file with you',
     html: require('../services/emailTemplate')({
       emailFrom: emailFrom,
-      downloadLink: `${process.env.APP_BASE_URL}file/${file.uuid}?source=email`,
+      downloadLink: `${process.env.APP_BASE_URL}/file/${file.uuid}?source=email`,
       size: parseInt(file.size / 1000) + ' KB',
       expires: '24 hours'
     })
