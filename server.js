@@ -8,6 +8,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 app.use(express.json());
 
+
+
 const connectDb = require('./config/db');
 
 connectDb();
@@ -17,7 +19,6 @@ const corsOptions = {
     origin: process.env.ALLOWED_CLIENTS.split(',')
     // ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:3300']
 };
-
 
 app.use(cors(corsOptions));
 
