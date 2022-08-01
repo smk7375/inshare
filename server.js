@@ -20,12 +20,13 @@ const corsOptions = {
     // ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:3300']
 };
 
-app.use(cors(corsOptions));
+
 
 // template engine
 app.set('views' , path.join(__dirname , '/views'));
 app.set('view engine' , 'ejs');
 
+app.use(cors(corsOptions));
 // routes
 app.use('/api/files' , require('./routes/files'));
 
