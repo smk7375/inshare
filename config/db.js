@@ -11,11 +11,6 @@ function connectDb() {
     .catch((error) =>{
         console.log('cannot connect to database, ${error}');
     });
-
-
-
-
-
 }
 
 //0YlIzQcfzZgFAiC1
