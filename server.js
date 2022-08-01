@@ -2,7 +2,7 @@ const express =  require('express');
 const path = require('path');
 
 const app = express();
-const cors = require('cors');
+// const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
@@ -15,10 +15,10 @@ const connectDb = require('./config/db');
 connectDb();
 
 //cors
-const corsOptions = {
-    origin: process.env.ALLOWED_CLIENTS.split(',')
-    // ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:3300']
-};
+// const corsOptions = {
+//     origin: process.env.ALLOWED_CLIENTS.split(',')
+//     // ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:3300']
+// };
 
 
 
@@ -26,7 +26,7 @@ const corsOptions = {
 app.set('views' , path.join(__dirname , '/views'));
 app.set('view engine' , 'ejs');
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 // routes
 app.use('/api/files' , require('./routes/files'));
 
